@@ -1,9 +1,11 @@
 package com.tnf.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-// Placeholder only - Batch is owned and fully defined by Group 2.
-// Included here so Trainee.java compiles against the batch_id relationship.
+// Dummy Entity for FK
 @Entity
 @Table(name = "batch")
 public class Batch {

@@ -3,6 +3,7 @@ import java.util.List;
 
 import com.tnf.entities.Trainee;
 
+
 public interface TraineeDAO {
 
     void registerTrainee(Trainee trainee);

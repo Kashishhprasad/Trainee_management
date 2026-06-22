@@ -1,17 +1,16 @@
 package com.tnf.dao;
 
-import com.tnf.entities.Trainee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import java.util.List;
 
+import com.tnf.entities.Trainee;
+
 public class TraineeDAOImpl implements TraineeDAO {
 
-    // No separate util package in this structure, so the SessionFactory
-    // is built right here. If Trainer/Batch/Feedback DAOs need the same
-    // factory, this is the place to make it shared later.
+    
     private static final SessionFactory sessionFactory =
             new Configuration().configure().buildSessionFactory();
 
