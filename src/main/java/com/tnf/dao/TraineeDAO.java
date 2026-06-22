@@ -8,11 +8,11 @@ public interface TraineeDAO {
 
     void registerTrainee(Trainee trainee);
 
-    Trainee searchTrainee(int traineeId);
+    Trainee findTrainee(Long traineeId);
 
     void updateTrainee(Trainee trainee);
 
-    void deleteTrainee(int traineeId);
+    void deleteTrainee(Long traineeId);
 
     List<Trainee> getAllTrainees();
 }

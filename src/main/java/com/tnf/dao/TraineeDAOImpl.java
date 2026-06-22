@@ -1,10 +1,11 @@
 package com.tnf.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import java.util.List;
 
 import com.tnf.entities.Trainee;
 
@@ -24,7 +25,7 @@ public class TraineeDAOImpl implements TraineeDAO {
     }
 
     @Override
-    public Trainee searchTrainee(int traineeId) {
+    public Trainee findTrainee(Long traineeId) {
         Session session = sessionFactory.openSession();
         Trainee trainee = session.get(Trainee.class, traineeId);
         session.close();
@@ -41,7 +42,7 @@ public class TraineeDAOImpl implements TraineeDAO {
     }
 
     @Override
-    public void deleteTrainee(int traineeId) {
+    public void deleteTrainee(Long traineeId) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         Trainee trainee = session.get(Trainee.class, traineeId);

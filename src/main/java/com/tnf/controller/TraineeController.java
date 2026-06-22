@@ -1,10 +1,12 @@
 package com.tnf.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import com.tnf.entities.Batch;
 import com.tnf.entities.Trainee;
+import com.tnf.exception.TraineeNotFoundException;
 import com.tnf.service.TraineeService;
 import com.tnf.service.TraineeServiceImpl;
 
@@ -75,10 +77,10 @@ public class TraineeController {
 
     private static void searchTrainee() {
         System.out.print("Enter Trainee Id: ");
-        int id = readInt();
-        Trainee trainee = traineeService.searchTrainee(id);
-        if (trainee != null) {
-            printTrainee(trainee);
+        Long id = readLong();
+        Optional<Trainee> result = traineeService.searchTrainee(id);
+        if (result.isPresent()) {
+            printTrainee(result.get());
         } else {
             System.out.println("No trainee found with Id: " + id);
         }
@@ -86,12 +88,13 @@ public class TraineeController {
 
     private static void updateTrainee() {
         System.out.print("Enter Trainee Id to update: ");
-        int id = readInt();
-        Trainee trainee = traineeService.searchTrainee(id);
-        if (trainee == null) {
+        Long id = readLong();
+        Optional<Trainee> result = traineeService.searchTrainee(id);
+        if (result.isEmpty()) {
             System.out.println("No trainee found with Id: " + id);
             return;
         }
+        Trainee trainee = result.get();
 
         System.out.print("Enter Trainee Name: ");
         trainee.setName(scanner.nextLine().trim());
@@ -110,9 +113,13 @@ public class TraineeController {
 
     private static void deleteTrainee() {
         System.out.print("Enter Trainee Id to delete: ");
-        int id = readInt();
-        traineeService.deleteTrainee(id);
-        System.out.println("Trainee deleted (if existed) with Id: " + id);
+        Long id = readLong();
+        try {
+            traineeService.deleteTrainee(id);
+            System.out.println("Trainee deleted with Id: " + id);
+        } catch (TraineeNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void viewAllTrainees() {
@@ -158,6 +165,16 @@ public class TraineeController {
         while (true) {
             try {
                 return Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid number, please enter again: ");
+            }
+        }
+    }
+
+    private static Long readLong() {
+        while (true) {
+            try {
+                return Long.parseLong(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
                 System.out.print("Invalid number, please enter again: ");
             }

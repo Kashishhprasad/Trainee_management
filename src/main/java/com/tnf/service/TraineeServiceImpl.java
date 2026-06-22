@@ -5,6 +5,7 @@ import com.tnf.dao.TraineeDAOImpl;
 import com.tnf.entities.Trainee;
 import com.tnf.exception.TraineeNotFoundException;
 
+import java.util.List;
 import java.util.Optional;
 
 public class TraineeServiceImpl implements TraineeService {
@@ -41,5 +42,10 @@ public class TraineeServiceImpl implements TraineeService {
                         "Trainee not found with id: " + traineeId));
 
         traineeDAO.deleteTrainee(trainee.getTraineeId());
+    }
+
+    @Override
+    public List<Trainee> getAllTrainees() {
+        return traineeDAO.getAllTrainees();
     }
 }

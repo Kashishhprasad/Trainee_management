@@ -1,6 +1,13 @@
 package com.tnf.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "trainee")
@@ -9,7 +16,7 @@ public class Trainee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trainee_id")
-    private int traineeId;
+    private Long traineeId;
 
     @Column(name = "name")
     private String name;
@@ -27,11 +34,11 @@ public class Trainee {
     public Trainee() {
     }
 
-    public int getTraineeId() {
+    public Long getTraineeId() {
         return traineeId;
     }
 
-    public void setTraineeId(int traineeId) {
+    public void setTraineeId(Long traineeId) {
         this.traineeId = traineeId;
     }
 

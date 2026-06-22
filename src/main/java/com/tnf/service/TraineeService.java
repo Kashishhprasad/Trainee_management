@@ -2,6 +2,7 @@ package com.tnf.service;
 
 import com.tnf.entities.Trainee;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface TraineeService {
@@ -13,4 +14,6 @@ public interface TraineeService {
     void updateTrainee(Trainee trainee);
 
     void deleteTrainee(Long traineeId);
+
+    List<Trainee> getAllTrainees();
 }
