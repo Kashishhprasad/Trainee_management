@@ -3,6 +3,7 @@ package com.tnf.service;
 import com.tnf.dao.TraineeDAO;
 import com.tnf.dao.TraineeDAOImpl;
 import com.tnf.entities.Trainee;
+import java.util.List;
 
 public class TraineeServiceImpl implements TraineeService {
 
@@ -26,5 +27,9 @@ public class TraineeServiceImpl implements TraineeService {
     @Override
     public void deleteTrainee(int traineeId) {
         traineeDAO.deleteTrainee(traineeId);
+    }
+    @Override
+    public List<Trainee> getAllTrainees() {
+        return traineeDAO.getAllTrainees();
     }
 }

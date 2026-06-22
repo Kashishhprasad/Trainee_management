@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import java.util.List;
 
 public class TraineeDAOImpl implements TraineeDAO {
 
@@ -50,5 +51,12 @@ public class TraineeDAOImpl implements TraineeDAO {
         }
         tx.commit();
         session.close();
+    }
+    @Override
+    public List<Trainee> getAllTrainees() {
+        Session session = sessionFactory.openSession();
+        List<Trainee> trainees = session.createQuery("from Trainee", Trainee.class).list();
+        session.close();
+        return trainees;
     }
 }
