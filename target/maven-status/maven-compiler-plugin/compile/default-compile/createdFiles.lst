@@ -1,0 +1,7 @@
+com/tnf/dao/TraineeDAOImpl.class
+com/tnf/dao/TraineeDAO.class
+com/tnf/controller/TraineeController.class
+com/tnf/service/TraineeService.class
+com/tnf/entities/Trainee.class
+com/tnf/service/TraineeServiceImpl.class
+com/tnf/entities/Batch.class
